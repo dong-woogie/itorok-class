@@ -2,6 +2,7 @@ import Koa from "koa";
 import { createConnection, getManager, getRepository } from "typeorm";
 import { ApolloServer, gql } from "apollo-server-koa";
 import bodyParser from "koa-bodyparser";
+import "reflect-metadata";
 import routes from "./routes";
 import { User } from "./entity/User";
 import schema from "./graphql/schema";
