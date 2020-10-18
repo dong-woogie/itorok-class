@@ -35,10 +35,7 @@ export class UserProfile extends BaseEntity {
   @UpdateDateColumn()
   updated_at!: Date;
 
-  @OneToOne((type) => User, { onDelete: "CASCADE" })
+  @OneToOne((type) => User, (user) => user.profile, { onDelete: "CASCADE" })
   @JoinColumn({ name: "fk_user_id" })
   user!: User;
-
-  @Column("uuid")
-  fk_user_id!: string;
 }

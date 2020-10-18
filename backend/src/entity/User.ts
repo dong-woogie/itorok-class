@@ -16,11 +16,9 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Index()
   @Column()
   username!: string;
 
-  @Index()
   @Column()
   email!: string;
 
@@ -35,8 +33,7 @@ export class User extends BaseEntity {
   @Column({ default: false })
   is_certified!: boolean;
 
-  @OneToOne((type) => UserProfile)
-  @JoinColumn()
+  @OneToOne((type) => UserProfile, (profile) => profile.user)
   profile!: UserProfile;
 
   // 해야 할 것
