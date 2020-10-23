@@ -10,6 +10,7 @@ import {
   JoinColumn,
 } from "typeorm";
 import { UserProfile } from "./UserProfile";
+import { generateToken } from '../lib/token'
 
 @Entity()
 export class User extends BaseEntity {
@@ -38,4 +39,13 @@ export class User extends BaseEntity {
 
   // 해야 할 것
   //generateUserToken : function
+
+  generateUserToken(): Promise<string> {
+    type TokenPayload = {
+      id : string,
+      username : string
+    } 
+    const {id,username} : TokenPayload = this
+    return generateToken({id, username})
+  }
 }
