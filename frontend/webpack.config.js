@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const appIndex = path.resolve(__dirname, "src", "index.tsx");
 const appSrc = path.resolve(__dirname, "src");
 const appBuild = path.resolve(__dirname, "build");
@@ -122,6 +123,7 @@ module.exports = (webpackEnv = "development") => {
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
+      plugins: [new TsconfigPathsPlugin({})],
     },
     devServer: {
       port: 3000,
