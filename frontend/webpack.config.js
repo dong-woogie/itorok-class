@@ -130,6 +130,9 @@ module.exports = (webpackEnv = "development") => {
       historyApiFallback: true,
       overlay: true,
       stats: "errors-warnings",
+      proxy: {
+        "/api": "http://localhost:5000",
+      },
     },
     devtool: isEnvProduction
       ? shouldUseSourceMap
