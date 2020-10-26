@@ -88,23 +88,24 @@ module.exports = (webpackEnv = "development") => {
           ],
         },
         {
-          loader: "file-loader",
-          // exclude: [/\.(js|mjs|jsx|ts|tsx|css)$/, /\.html$/, /\.json$/],
-          test: /\.(png|jpe?g|gif)$/i,
-          options: {
-            outputPath: "static/media",
-            name: "[name].[hash:8].[ext]",
-            esModule: false,
-          },
-        },
-        {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: "url-loader",
-          options: {
-            limit: 10000,
-            outputPath: "static/media",
-            name: "[name].[hash:8].[ext]",
-          },
+          oneOf: [
+            {
+              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              loader: require.resolve("url-loader"),
+              options: {
+                limit: "10000",
+                name: "static/media/[name].[hash:8].[ext]",
+              },
+            },
+            {
+              loader: require.resolve("file-loader"),
+              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              options: {
+                name: "static/media/[name].[hash:8].[ext]",
+              },
+            },
+          ],
         },
         {
           test: /\.(ts|tsx)$/,
