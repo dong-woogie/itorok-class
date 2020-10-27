@@ -29,6 +29,9 @@ const color = {
   gray9: "#212529",
   silver: "#bdc3c7",
   default: "#495057",
+
+  teal3: "#63e6be",
+  teal5: "#20c997",
 };
 
 const secondaryColors = {};

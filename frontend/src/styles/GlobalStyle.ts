@@ -27,10 +27,25 @@ const GlobalStyle = createGlobalStyle`
     background-color : transparent;
     outline : none;
     border : none;
+    padding : 0;
   }
+
+  button {
+    cursor : pointer;
+  }
+  
   h1,h2,h3,h4,h5,h6 {
     font-family : 'Maven Pro', sans-serif;
   }
+
+  h2{
+    font-size : 2.1rem;
+  }
+
+  h4{
+    font-size : 1.6rem;
+  }
+
   img {
     display : block;
     width : 100%;
