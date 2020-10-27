@@ -1,12 +1,14 @@
 import React from "react";
-import styled, { css } from "@styled-components";
+import styled from "@styled-components";
 
-export type DialogProps = {};
+export type DialogProps = {
+  children: React.ReactNode;
+};
 
 function Dialog(props: DialogProps) {
   return (
     <DarkBackground>
-      <DarkBlock>하이우기!?</DarkBlock>
+      <DarkBlock>{props.children}</DarkBlock>
     </DarkBackground>
   );
 }
@@ -25,10 +27,12 @@ const DarkBackground = styled.div`
 `;
 
 const DarkBlock = styled.div`
-  width: 320px;
-  padding: 1.5rem;
   background: white;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 12px 0px;
+
+  width: 60.6rem;
+  height: 48rem;
 `;
 
 export default Dialog;

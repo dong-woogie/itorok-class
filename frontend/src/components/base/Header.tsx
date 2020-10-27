@@ -6,6 +6,7 @@ import { IoLogoOctocat } from "react-icons/io";
 import { lighten } from "polished";
 import MainResponsive from "components/common/MainResponsive";
 import Dialog from "components/common/Dialog";
+import LoginForm from "components/etc/LoginForm";
 
 function Header() {
   return (
@@ -29,7 +30,9 @@ function Header() {
           </div>
         </Content>
       </MainResponsive>
-      <Dialog />
+      <Dialog>
+        <LoginForm />
+      </Dialog>
     </Wrap>
   );
 }
@@ -54,7 +57,7 @@ const Content = styled.div`
 
   & .right {
     display: flex;
-
+    align-items: center;
     div + div {
       margin-left: 2rem;
     }
@@ -74,7 +77,6 @@ const SearchButton = styled.button`
   ${(props) => {
     const silver = props.theme.color.gray4;
     return css`
-      cursor: pointer;
       width: 4rem;
       height: 4rem;
       padding: 0;
@@ -91,9 +93,9 @@ const SearchButton = styled.button`
 `;
 
 const LoginButton = styled.button`
-  cursor: pointer;
   height: 100%;
   border-radius: 24px;
+  height: 28px;
   background: ${(props) => props.theme.color.gray8};
   color: ${(props) => props.theme.color.white};
   padding: 0 2rem;
