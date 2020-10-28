@@ -1,14 +1,12 @@
-import Router from "koa-router";
-import api from "./api";
-import auth from "./auth";
+import Router from 'koa-router';
+import api from './api';
 
 const routes = new Router();
 
-routes.use("/api", api.routes());
-routes.use("/auth", auth.routes());
+routes.use('/api', api.routes());
 
-routes.get("/", (ctx) => {
-  ctx.body = "hello world";
+routes.get('/', ctx => {
+  ctx.body = 'hello world';
 });
 
 export default routes;
