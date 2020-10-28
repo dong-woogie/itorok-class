@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@styled-components";
-import { mediaQuery } from "../../styles/media";
+import { mediaQuery } from "styles/theme";
 
 type MainResponsiveProps = {
   children: React.ReactNode;

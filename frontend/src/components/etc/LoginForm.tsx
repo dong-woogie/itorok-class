@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styles/theme-components";
 import { FiX } from "react-icons/fi";
 import ItorokImage from "static/images/Logo.png";
-import { lighten } from "polished";
+import AuthSocialButton from "components/auth/AuthSocialButton";
 
 function LoginForm() {
   const onSubmit = (e: FormEvent) => {
@@ -18,26 +18,38 @@ function LoginForm() {
       </div>
       <div className="right">
         <div className="exit-wrap">
-          <ExitButton />
+          <ExitButton tabIndex={1} />
         </div>
         <Content>
           <h2 className="title">로그인</h2>
           <div className="email">
             <h4 className="subtitle">이메일로 로그인</h4>
             <form onSubmit={onSubmit}>
-              <input type="text" placeholder="이메일을 입력해주세요." />
-              <button type="submit">로그인</button>
+              <input
+                type="text"
+                placeholder="이메일을 입력해주세요."
+                tabIndex={2}
+              />
+              <button type="submit" tabIndex={3}>
+                로그인
+              </button>
             </form>
           </div>
           <div className="social">
             <h4 className="subtitle">소셜 계정으로 로그인</h4>
-            <div className="social-icons"></div>
+            <div className="social-icons">
+              <AuthSocialButton provider="github" tabIndex={4} />
+              <AuthSocialButton provider="google" tabIndex={5} />
+              <AuthSocialButton provider="facebook" tabIndex={6} />
+            </div>
           </div>
         </Content>
         <div className="footer">
           아직 회원이 아니신가요?{" "}
           <Link to="/register">
-            <span className="register">회원가입</span>
+            <span className="register" tabIndex={7}>
+              회원가입
+            </span>
           </Link>
         </div>
       </div>
@@ -106,6 +118,10 @@ const Content = styled.div`
       border-radius: 4px;
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
+
+      &:focus {
+        background: ${(props) => props.theme.color.teal3};
+      }
     }
   }
   & .social {
@@ -114,6 +130,8 @@ const Content = styled.div`
 
   & .social-icons {
     margin-top: 2.4rem;
+    display: flex;
+    justify-content: space-around;
   }
 `;
 
@@ -124,8 +142,9 @@ const ExitButton = styled(FiX)`
   padding: 1rem;
 
   cursor: pointer;
-
-  &:hover {
+  outline: none;
+  &:hover,
+  &:focus {
     background-color: ${(props) => props.theme.color.gray4};
   }
 `;
