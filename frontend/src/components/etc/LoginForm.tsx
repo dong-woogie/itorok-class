@@ -1,11 +1,12 @@
 import React, { FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styles/theme-components";
 import { FiX } from "react-icons/fi";
 import ItorokImage from "static/images/Logo.png";
 import AuthSocialButton from "components/auth/AuthSocialButton";
 
 function LoginForm() {
+  const { pathname } = useLocation();
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
@@ -38,9 +39,21 @@ function LoginForm() {
           <div className="social">
             <h4 className="subtitle">소셜 계정으로 로그인</h4>
             <div className="social-icons">
-              <AuthSocialButton provider="github" tabIndex={4} />
-              <AuthSocialButton provider="google" tabIndex={5} />
-              <AuthSocialButton provider="facebook" tabIndex={6} />
+              <AuthSocialButton
+                provider="github"
+                currentPath={pathname}
+                tabIndex={4}
+              />
+              <AuthSocialButton
+                provider="google"
+                currentPath={pathname}
+                tabIndex={5}
+              />
+              <AuthSocialButton
+                provider="facebook"
+                currentPath={pathname}
+                tabIndex={6}
+              />
             </div>
           </div>
         </Content>
