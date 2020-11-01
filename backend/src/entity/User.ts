@@ -8,13 +8,13 @@ import {
   OneToOne,
   BaseEntity,
   JoinColumn,
-} from "typeorm";
-import { UserProfile } from "./UserProfile";
-import { generateToken } from '../lib/token'
+} from 'typeorm';
+import { UserProfile } from './UserProfile';
+import { generateToken } from '../lib/token';
 
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column()
@@ -23,18 +23,18 @@ export class User extends BaseEntity {
   @Column()
   email!: string;
 
-  @Column("timestamptz")
+  @Column('timestamptz')
   @CreateDateColumn()
   created_at!: Date;
 
-  @Column("timestamptz")
+  @Column('timestamptz')
   @UpdateDateColumn()
   updated_at!: Date;
 
   @Column({ default: false })
   is_certified!: boolean;
 
-  @OneToOne((type) => UserProfile, (profile) => profile.user)
+  @OneToOne(type => UserProfile, profile => profile.user)
   profile!: UserProfile;
 
   // 해야 할 것
@@ -42,10 +42,10 @@ export class User extends BaseEntity {
 
   generateUserToken(): Promise<string> {
     type TokenPayload = {
-      id : string,
-      username : string
-    } 
-    const {id,username} : TokenPayload = this
-    return generateToken({id, username})
+      id: string;
+      username: string;
+    };
+    const { id, username }: TokenPayload = this;
+    return generateToken({ id, username });
   }
 }
